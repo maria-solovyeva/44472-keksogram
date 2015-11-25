@@ -89,7 +89,7 @@
 
       // Толщина линии.
       this._ctx.lineWidth = 6;
-	  this._ctx.lineCap = 'round';
+      this._ctx.lineCap = 'round';
       // Цвет обводки.
       this._ctx.strokeStyle = '#ffe753';
       // Размер штрихов. Первый элемент массива задает длину штриха, второй
@@ -112,32 +112,32 @@
       // Координаты задаются от центра холста.
       this._ctx.drawImage(this._image, displX, displY);
 
-	  this._ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+      this._ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
 
       this._ctx.fillRect(
-	      -(this._container.width / 2),
-		  -(this._container.height / 2),
-		  this._container.width,
-		  this._container.height / 2 - (this._resizeConstraint.side / 2 + this._ctx.lineWidth) );
-	  this._ctx.fillRect(
-	      -(this._container.width / 2),
-		  this._container.height / 2,
-		  this._container.width,
-		  ( -(this._container.height / 2) + (this._resizeConstraint.side / 2 - this._ctx.lineWidth / 2)) );
-	  this._ctx.fillRect(
-	      -(this._container.width / 2),
-		  -(this._resizeConstraint.side / 2 + this._ctx.lineWidth),
-		  this._container.width / 2 - (this._resizeConstraint.side / 2 + this._ctx.lineWidth),
-		  this._resizeConstraint.side + this._ctx.lineWidth / 2);
-	  this._ctx.fillRect(
-	      this._container.width / 2,
-		  -(this._resizeConstraint.side / 2 + this._ctx.lineWidth),
-		  -(this._container.width / 2 - this._resizeConstraint.side / 2 + this._ctx.lineWidth / 2),
-		  this._resizeConstraint.side + this._ctx.lineWidth / 2);
+        -(this._container.width / 2),
+        -(this._container.height / 2),
+        this._container.width,
+        this._container.height / 2 - (this._resizeConstraint.side / 2 + this._ctx.lineWidth) );
+      this._ctx.fillRect(
+        -(this._container.width / 2),
+        this._container.height / 2,
+        this._container.width,
+        ( -(this._container.height / 2) + (this._resizeConstraint.side / 2 - this._ctx.lineWidth / 2)) );
+      this._ctx.fillRect(
+        -(this._container.width / 2),
+        -(this._resizeConstraint.side / 2 + this._ctx.lineWidth),
+        this._container.width / 2 - (this._resizeConstraint.side / 2 + this._ctx.lineWidth),
+        this._resizeConstraint.side + this._ctx.lineWidth / 2);
+      this._ctx.fillRect(
+        this._container.width / 2,
+        -(this._resizeConstraint.side / 2 + this._ctx.lineWidth),
+        -(this._container.width / 2 - this._resizeConstraint.side / 2 + this._ctx.lineWidth / 2),
+        this._resizeConstraint.side + this._ctx.lineWidth / 2);
 		  
       this._ctx.font = 'normal 14px Arial';
       this._ctx.textAlign = 'center';
-	  this._ctx.fillStyle = 'white';
+      this._ctx.fillStyle = 'white';
       this._ctx.fillText(this._image.naturalWidth + ' x ' + this._image.naturalHeight, 0, (-this._resizeConstraint.side / 2) - this._ctx.lineWidth * 2);
 	  
       // Отрисовка прямоугольника, обозначающего область изображения после
@@ -147,7 +147,7 @@
           (-this._resizeConstraint.side / 2) - this._ctx.lineWidth / 2,
           this._resizeConstraint.side - this._ctx.lineWidth / 2,
           this._resizeConstraint.side - this._ctx.lineWidth / 2);
-	  
+
       // Восстановление состояния канваса, которое было до вызова ctx.save
       // и последующего изменения системы координат. Нужно для того, чтобы
       // следующий кадр рисовался с привычной системой координат, где точка
