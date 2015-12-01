@@ -193,6 +193,7 @@
     resizeForm.classList.add('invisible');
     uploadForm.classList.remove('invisible');
   };
+
   resizeForm.onchange = function() {
     if (resizeFormIsValid()) {
       resizeForm['resize-fwd'].disabled = false;
