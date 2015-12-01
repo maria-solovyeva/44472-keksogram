@@ -193,13 +193,13 @@
     resizeForm.classList.add('invisible');
     uploadForm.classList.remove('invisible');
   };
-  resizeForm.onchange = function () {
+  resizeForm.onchange = function() {
     if (resizeFormIsValid()) {
       resizeForm['resize-fwd'].disabled = false;
     } else {
       resizeForm['resize-fwd'].disabled = true;
     }
-  }
+  };
 
   /**
    * Обработка отправки формы кадрирования. Если форма валидна, экспортирует
