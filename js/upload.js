@@ -72,7 +72,15 @@
    * @return {boolean}
    */
   function resizeFormIsValid() {
-    return true;
+    var resizeFrameX = parseInt(resizeForm['resize-x'].value, 10);
+    var resizeFrameY = parseInt(resizeForm['resize-y'].value, 10);
+    var resizeFrameSide = parseInt(resizeForm['resize-size'].value, 10);
+    if (resizeFrameX + resizeFrameSide <= currentResizer._image.naturalWidth
+      && resizeFrameY + resizeFrameSide <= currentResizer._image.naturalHeight) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   /**
@@ -184,6 +192,14 @@
 
     resizeForm.classList.add('invisible');
     uploadForm.classList.remove('invisible');
+  };
+
+  resizeForm.onchange = function() {
+    if (resizeFormIsValid()) {
+      resizeForm['resize-fwd'].disabled = false;
+    } else {
+      resizeForm['resize-fwd'].disabled = true;
+    }
   };
 
   /**
