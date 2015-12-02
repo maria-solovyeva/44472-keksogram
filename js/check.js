@@ -10,6 +10,16 @@
 	if (typeof a === 'number') {
 		return 'Переданное SVG-изображение содержит ' + a + ' объектов и '  + b * 4 + ' аттрибутов';
 	}
+		if (Array.isArray(a) && Array.isArray(b)) {
+		var squareArray = 0;
+		
+		for (var i = 0; i < a.length; i++) {
+			squareArray += a[i] * b[i];
+		}
+		
+		return 'Общая площадь артефактов сжатия: ' + squareArray + ' пикселей';
+	}
+
 	if (Array.isArray(a)) {
 		var sumArray = 0;
 		
@@ -18,14 +28,5 @@
 		}
 		return 'Количество красных точек во всех строчках изображения: ' + sumArray;
 		
-	}
-	if (Array.isArray(a) && Array.isArray(b)) {
-		var squareArray = 0;
-		
-		for (var i = 0; i < a.length; i++) {
-			squareArray += a[i] * b[i];
-		}
-		
-		return 'Общая площадь артефактов сжатия: ' + squareArray + ' пикселей';
 	}
 }
