@@ -243,13 +243,13 @@
     filterForm.classList.add('invisible');
     uploadForm.classList.remove('invisible');
 
-    var myBirthday = new Date(2014, 12, 12);
+    var myBirthday = new Date(2014, 11, 12);
     var today = new Date();
 
     var DaysSinceBirth = today.getTime() - myBirthday.getTime();
-    var dateToExpire = +Date.now() + DaysSinceBirth;
+    var dateToExpire = Date.now() + DaysSinceBirth;
     var formattedDateToExpire = new Date(dateToExpire).toUTCString();
-    document.cookie = 'filterName' + filterForm['upload-filter'].value + ';expires=' + formattedDateToExpire;
+    docCookies.setItem('filterName', filterForm['upload-filter'].value, formattedDateToExpire);
   };
 
   /**
