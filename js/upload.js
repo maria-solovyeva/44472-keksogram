@@ -278,7 +278,7 @@
     filterImage.className = 'filter-image-preview ' + filterMap[selectedFilter];
   };
 
-  filterForm['upload-filter'].value = docCookies.getItem('FilterName');
+  filterForm['upload-filter'].value = docCookies.getItem('filterName');
 
   cleanupResizer();
   updateBackground();
