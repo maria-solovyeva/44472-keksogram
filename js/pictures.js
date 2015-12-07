@@ -6,17 +6,18 @@
 
   filters.classList.add('hidden');
 
-  pictures.forEach(function(picture) {
+  window.pictures.forEach(function(picture) {
     var element = getElementFromTemplate(picture);
     container.appendChild(element);
   });
 
   function getElementFromTemplate(data) {
     var template = document.querySelector('#picture-template');
+    var element;
     if ('content' in template) {
-      var element = template.content.children[0].cloneNode(true);
+      element = template.content.children[0].cloneNode(true);
     } else {
-      var element = template.children[0].cloneNode(true);
+      element = template.children[0].cloneNode(true);
     }
 
     element.querySelector('.picture-comments').textContent = data.comments;
@@ -43,6 +44,6 @@
     image.src = data.url;
 
     return element;
-  };
+  }
   filters.classList.remove('hidden');
 })();
