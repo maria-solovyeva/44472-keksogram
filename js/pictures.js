@@ -24,7 +24,6 @@
 
     picturesToRender.forEach(function(picture) {
       var element = getElementFromTemplate(picture);
-      
       fragment.appendChild(element);
     });
 
