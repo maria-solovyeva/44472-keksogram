@@ -5,24 +5,50 @@
   var template = document.querySelector('#picture-template');
   var activeFilter = 'filter-popular';
   var pictures = [];
+  var filteredPictures = [];
 
-  var filters = document.querySelectorAll('.filters-radio');
-  for (var i = 0; i < filters.length; i++) {
-    filters[i].onclick = function(evt) {
-      var clickedElementID = evt.target.id;
-      setActiveFilter(clickedElementID);
-    };
-  }
+  var currentPage = 0;
+  var PAGE_SIZE = 12;
+
+  var filters = document.querySelector('.filters');
+  filters.addEventListener('click', function(evt) {
+    var clickedElement = evt.target;
+    if (clickedElement.classList.contains('filters-radio')) {
+      setActiveFilter(clickedElement.id);
+    }
+  });
 
   container.classList.add('pictures-loading');
 
+  var scrollTimeout;
+
+  window.addEventListener('scroll', function() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(addPageToScroll, 100);
+  });
+
+  function addPageToScroll() {
+    var footerCoordinates = document.querySelector('.pictures').getBoundingClientRect();
+    var viewportSize = window.innerHeight;
+    if (footerCoordinates.bottom - viewportSize <= footerCoordinates.height) {
+      if (currentPage < Math.ceil(filteredPictures.length / PAGE_SIZE)) {
+        renderPictures(filteredPictures, ++currentPage);
+      }
+    }
+  }
+
   getPictures();
 
-  function renderPictures(picturesToRender) {
-    container.innerHTML = '';
+  function renderPictures(picturesToRender, pageNumber, replace) {
+    if (replace) {
+      container.innerHTML = '';
+    }
     var fragment = document.createDocumentFragment();
 
-    picturesToRender.forEach(function(picture) {
+    var from = pageNumber * PAGE_SIZE;
+    var to = from + PAGE_SIZE;
+    var pagePictures = picturesToRender.slice(from, to);
+    pagePictures.forEach(function(picture) {
       var element = getElementFromTemplate(picture);
       fragment.appendChild(element);
     });
@@ -34,7 +60,7 @@
     if (activeFilter === id && !force) {
       return;
     }
-    var filteredPictures = pictures.slice(0);
+    filteredPictures = pictures.slice(0);
 
     switch (id) {
       case 'filter-new':
@@ -53,7 +79,7 @@
         break;
     }
 
-    renderPictures(filteredPictures);
+    renderPictures(filteredPictures, 0, true);
 
     activeFilter = id;
   }
