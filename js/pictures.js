@@ -31,10 +31,6 @@
   }
 
   function setActiveFilter(id) {
-    if (activeFilter === id) {
-      return;
-    }
-
     var filteredPictures = pictures.slice(0);
 
     switch (id) {
