@@ -30,7 +30,10 @@
     container.appendChild(fragment);
   }
 
-  function setActiveFilter(id) {
+  function setActiveFilter(id, force) {
+    if (activeFilter === id && !force) {
+      return;
+    }
     var filteredPictures = pictures.slice(0);
 
     switch (id) {
